@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+void leksikographZeroOne(string s, int n)
+{
+	if (n == 0)
+	{
+		cout << s << "\n";
+		return;
+	}
+	leksikographZeroOne(s + '0', n - 1);
+	leksikographZeroOne(s + '1', n - 1);
+}
+
+int main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0); cout.tie(0);
+
+	// Вывод следующей по порядку анаграммы
+	string word;
+	cin >> word;
+	next_permutation(word.begin(), word.end());
+	cout << word;
+
+	// Вывод всех строк из 0 и 1 в лексикографическом порядке
+	string s = ""; int n = 0;
+	cin >> n;
+	leksikographZeroOne(s, n);
+
+	return 0;
+}
